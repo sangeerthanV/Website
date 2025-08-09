@@ -1,0 +1,170 @@
+/* --------------------------------------------------- */
+/* 1. VARIABLES & GENERAL STYLES
+/* --------------------------------------------------- */
+:root {
+    --primary-color: #5844F3;
+    --secondary-color: #F9A03F;
+    --text-color: #2F2F2F;
+    --text-color-light: #6c757d;
+    --accent-white: #E2F2FE;
+    --white: #FFFFFF;
+    --light-bg: #F8F9FA;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+.section-padding { padding: 80px 0; }
+.btn-brand {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-brand:hover {
+    background-color: #e08e38;
+    color: var(--white);
+}
+
+/* --------------------------------------------------- */
+/* 2. NAVBAR & MOBILE MENU
+/* --------------------------------------------------- */
+.navbar { background-color: var(--primary-color); }
+.navbar-brand { font-weight: 700; font-size: 1.5rem; color: var(--white) !important; }
+.navbar .nav-link { font-weight: 600; color: var(--white); }
+.navbar .nav-link:hover { color: var(--secondary-color); }
+.navbar-toggler { border: none; font-size: 1.5rem; color: var(--white); }
+.navbar-toggler:focus { box-shadow: none; }
+
+/* Mobile Menu Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--white);
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* MODIFIED: Align items to the start (left) */
+    align-items: flex-start; 
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    /* MODIFIED: Add padding for content spacing */
+    padding: 40px;
+}
+.mobile-nav-overlay.open { transform: translateY(0); }
+.mobile-nav-overlay .nav-link {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    padding: 10px 0;
+}
+.mobile-nav-overlay .navbar-nav {
+    /* MODIFIED: Ensure list takes full width for alignment */
+    width: 100%;
+}
+.btn-close-nav {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+}
+
+/* --------------------------------------------------- */
+/* 3. HERO SECTION - DUAL LAYOUT
+/* --------------------------------------------------- */
+
+/* --- MOBILE FIRST: Stacked Layout (Default) --- */
+#hero {
+    padding: 60px 0;
+    background-color: #f1f5f8; /* A light background for the content on mobile */
+}
+.hero-image-container {
+    height: 300px; /* The height of the image block on mobile */
+    background: url('images/3.jpg') no-repeat center center;
+    background-size: cover;
+}
+.hero-content-box {
+    background: linear-gradient(145deg, #00A99D, #00C2B2);
+    padding: 40px;
+    border-radius: 8px;
+    margin: 0 auto; /* Center the box on mobile */
+    text-align: center;
+}
+.hero-content-box h1 {
+    color: var(--white);
+    font-size: 2rem;
+    line-height: 1.3;
+}
+.hero-content-box .btn-brand {
+    margin: 1rem auto 0;
+    display: block;
+    width: fit-content;
+}
+
+/* --- DESKTOP: Overlay Layout (Viewport > 992px) --- */
+@media (min-width: 992px) {
+    #hero {
+        position: relative;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        padding: 0; /* Remove mobile padding */
+        background-color: transparent; /* Remove mobile background color */
+    }
+    .hero-image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    #hero .container {
+        position: relative;
+        z-index: 2; /* Ensure content is above the image layer */
+    }
+    .hero-content-box {
+        text-align: left; /* Re-align text to the left on desktop */
+        margin: 0; /* Remove auto margin */
+    }
+     .hero-content-box h1 {
+        font-size: 2.5rem; /* Larger font for desktop */
+    }
+    .hero-content-box .btn-brand {
+        margin: 1.5rem 0 0; /* Reset margin for left alignment */
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* 4. SERVICES, FAQ, FOOTER (Minor adjustments if needed)
+/* --------------------------------------------------- */
+.service-icon {
+    max-width: 250px;
+    margin-bottom: 30px;
+}
+#faq { background-color: var(--light-bg); }
+.accordion-item { background-color: var(--accent-white); border: none; margin-bottom: 15px; border-radius: 8px !important; overflow: hidden; }
+.accordion-button { background-color: var(--accent-white); color: var(--text-color); font-weight: 600; font-size: 1.1rem; border: none; }
+.accordion-button:focus { box-shadow: none; }
+.accordion-button:not(.collapsed) { color: var(--text-color); background-color: var(--accent-white); }
+.accordion-body { background-color: var(--accent-white); }
+.accordion-button::after { content: '+'; font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 400; background-image: none; transform: translateY(-4px); color: var(--primary-color); }
+.accordion-button:not(.collapsed)::after { content: '−'; transform: translateY(-4px); }
+footer { background-color: var(--primary-color); color: var(--white); }
+.footer-brand { font-weight: 700; font-size: 1.5rem; color: var(--white); }
+footer a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+footer a:hover { color: var(--white); }
+footer .list-unstyled a { display: block; margin-bottom: 5px; }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; }
